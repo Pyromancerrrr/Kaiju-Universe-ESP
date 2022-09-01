@@ -1,1 +1,13 @@
+local function ESP()
+	for _, I in pairs(workspace:GetChildren()) do
+		if I:IsA("Model") then 
+			if I:FindFirstChild("Humanoid") then
+				local H = Instance.new("Highlight")
+				H.Parent = I:FindFirstChild("HumanoidRootPart")
+			end
+		end
+	end
+end
 
+wait(1)
+ESP()
