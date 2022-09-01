@@ -1,13 +1,25 @@
 local function ESP()
+	local Player = game.Players.LocalPlayer
+	local AttackPart = workspace[game.Players.LocalPlayer.Name].AttackPart
+
 	for _, I in pairs(workspace:GetChildren()) do
 		if I:IsA("Model") then 
 			if I:FindFirstChild("Humanoid") then
-				local H = Instance.new("Highlight")
-				H.Parent = I:FindFirstChild("HumanoidRootPart")
-			end
-		end
+				if workspace[Player.Name].HumanoidRootPart.CFrame.Position.Magnitude < I:FindFirstChild("HumanoidRootPart").CFrame.Position.Magnitude then
+				local H = I:FindFirstChild("HumanoidRootPart")
+				H.Material = Enum.Material.Neon
+				while true do
+				if not workspace:FindFirstChild(I.Name) then break end
+				AttackPart.Position = H
+				game.Events.Attack:FireServer()
+				wait()
+	                end
+                     end
+		  end
+	       end
+            end
 	end
-end
 
-wait(1)
-ESP()
+	wait(1)
+	ESP()
+
